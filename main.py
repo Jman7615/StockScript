@@ -6,12 +6,13 @@ import pandas as pd
 import sys
 import os
 
-filename = 'margin1.csv'
+filename = 'margin'
 APIKEY = 'your_key_here'
 
-
-file = os.path.abspath(filename)
-
+file = os.path.abspath(filename+'.csv')
+path = Path(__file__).absolute()
+sys.stdout = open(filename+"_output.txt", 'w')
+print(filename+"_output.txt")
 
 # calls the API and downloads time series daily for given symbol as [symbol].csv
 def getCSV(SYM):
@@ -190,4 +191,4 @@ print("Total Long Term Gain: " + str("{:.3f}".format(LTOTAL)))
 print("Total Short Term Gain: " + str("{:.3f}".format(STOTAL)))
 
 print("Done")
-# sys.stdout.close()
+sys.stdout.close()
